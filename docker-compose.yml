@@ -1,0 +1,17 @@
+version: '3.4'
+
+networks:
+  reaction:
+    external:
+      name: reaction.localhost
+
+
+services:
+  reaction-camunda:
+    image: camunda/camunda-bpm-platform:run-latest
+    container_name: 'reaction-camunda'
+    ports:
+      - '8080:8080'
+    networks:
+      - reaction
+    restart: on-failure
